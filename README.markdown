@@ -1,7 +1,6 @@
 dhttpsproxy
 ================
 
-
 About
 -----
 
@@ -11,20 +10,20 @@ dhttpsproxy is a working and small http[s]? mitm proxy.
 Getting Started
 ---------------
 
-	1. start the deamon
+1. start the deamon
 		lem proxy.lua
 	
 
-	2. point a browser to: http://localhost:8000/
+2. point a browser to: http://localhost:8000/
 	
-	On a terminal type
+3. On a terminal type
 
 		export http_proxy=localhost:8888
 		export https_proxy=localhost:8888
 		curl example.com
 
 
-	3. you should be able to see your request / reply on your browser.
+4. you should be able to see your request / reply on your browser.
 
 Preview
 -----
