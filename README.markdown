@@ -11,11 +11,11 @@ Getting Started
 ---------------
 
 1. start the deamon
+
 		lem proxy.lua
-	
 
 2. point a browser to: http://localhost:8000/
-	
+
 3. On a terminal type
 
 		export http_proxy=localhost:8888
