@@ -1,0 +1,25 @@
+.table-wrapper table {
+  table-layout: fixed;
+  width: 100vw; }
+  .table-wrapper table thead .op {
+    width: 20px; }
+  .table-wrapper table thead .duration,
+  .table-wrapper table thead .starttime-pp,
+  .table-wrapper table thead .endtime-pp {
+    width: 100px; }
+  .table-wrapper table thead .duration {
+    width: 70px; }
+  .table-wrapper table thead .-body {
+    width: 50px; }
+  .table-wrapper table thead .status,
+  .table-wrapper table thead .method {
+    width: 38px; }
+  .table-wrapper table td div {
+    overflow: hidden;
+    text-overflow: clip;
+    width: 100%;
+    text-align: center; }
+    .table-wrapper table td div.date {
+      direction: rtl; }
+    .table-wrapper table td div.url {
+      text-align: left; }

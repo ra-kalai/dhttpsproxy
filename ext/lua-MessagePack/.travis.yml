@@ -1,0 +1,47 @@
+language: python
+sudo: false
+
+env:
+  - LUA="lua 5.1"       COMPAT=default  CFLAGS=""
+  - LUA="lua 5.2"       COMPAT=default  CFLAGS=""
+  - LUA="lua 5.2"       COMPAT=none     CFLAGS=""
+  - LUA="lua 5.3"       COMPAT=default  CFLAGS=""
+  - LUA="lua 5.3"       COMPAT=none     CFLAGS=""
+  - LUA="lua 5.3"       COMPAT=default  CFLAGS="-DLUA_NOCVTN2S -DLUA_NOCVTS2N"
+  - LUA="lua 5.3"       COMPAT=default  CFLAGS="-DLUA_32BITS"
+  - LUA="lua 5.3"       COMPAT=default  CFLAGS="-DLUA_FLOAT_TYPE=3"
+  - LUA="lua 5.3"       COMPAT=default  SRC53="LUAVER=5.3" CFLAGS=""
+  - LUA="lua 5.3"       COMPAT=none     SRC53="LUAVER=5.3" CFLAGS=""
+  - LUA="lua 5.3"       COMPAT=default  SRC53="LUAVER=5.3" CFLAGS="-DLUA_NOCVTN2S -DLUA_NOCVTS2N"
+  - LUA="lua 5.3"       COMPAT=default  SRC53="LUAVER=5.3" CFLAGS="-DLUA_32BITS"
+  - LUA="lua 5.3"       COMPAT=default  SRC53="LUAVER=5.3" CFLAGS="-DLUA_FLOAT_TYPE=3"
+  - LUA="luajit 2.0"    COMPAT=none     CFLAGS=""
+  - LUA="luajit 2.0"    COMPAT=all      CFLAGS=""
+  - LUA="luajit 2.1"    COMPAT=none     CFLAGS=""
+  - LUA="luajit 2.1"    COMPAT=all      CFLAGS=""
+
+before_install:
+  - pip install hererocks
+  - hererocks HERE --$LUA --compat $COMPAT --cflags="$CFLAGS" --no-readline --luarocks latest --verbose
+  - hererocks HERE --show
+  - source HERE/bin/activate
+
+install:
+  - luarocks install luacov-coveralls
+  - luarocks install luacheck
+  - luarocks install lua-testmore
+  - luarocks install lua-coat
+  - luarocks install lbc
+  - luarocks install lmathx # required by Lua-5.3-strict
+
+script:
+  - make luacheck
+  - make test $SRC53
+
+after_success:
+  - make coveralls $SRC53
+
+branches:
+  only:
+    - master
+

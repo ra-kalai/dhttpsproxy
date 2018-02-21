@@ -1,0 +1,4 @@
+set -m
+stty sane ; clear ; reset
+( vim -i NONE $EDIT_FILE ; kill -s HUP $$ )
+reset

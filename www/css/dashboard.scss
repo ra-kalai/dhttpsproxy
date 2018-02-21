@@ -1,0 +1,38 @@
+.table-wrapper table {
+	table-layout: fixed;
+	width: 100vw;
+	thead {
+		.op {
+			width: 20px;
+		}
+		.duration,
+		.starttime-pp,
+		.endtime-pp {
+			width: 100px;
+		}
+		.duration {
+			width: 70px;
+		}
+		.-body {
+			width: 50px;
+		}
+		.status,
+		.method {
+			width: 38px;
+		}
+	}
+	
+	td div {
+		overflow: hidden;
+		text-overflow: clip;
+		width: 100%;
+		text-align: center;
+
+		&.date {
+			direction: rtl;
+		}
+		&.url {
+			text-align: left;
+		}
+	}
+}

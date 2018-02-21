@@ -1,0 +1,10 @@
+
+/site
+/MANIFEST
+/README.html
+/*.tar
+/*.bak
+/*.tar.gz
+/*.rock
+
+*.out
